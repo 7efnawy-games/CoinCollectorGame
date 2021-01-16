@@ -45,7 +45,7 @@ public:
 
 	//UProjectileMovementComponent* ProjectileMovement = nullptr;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite, Category = "Components")
 		UStaticMeshComponent* CollisionMesh = nullptr;
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")

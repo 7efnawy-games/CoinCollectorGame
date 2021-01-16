@@ -6,6 +6,7 @@
 #include "GameFramework/Pawn.h"
 #include"Components/StaticMeshComponent.h"
 #include"Components/SceneComponent.h"
+#include "Particles/ParticleSystemComponent.h"
 #include"Projectile.h"
 #include "Turret.generated.h"
 
@@ -76,5 +77,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile Information")
 		float TurretProjectileDamage = 10.f;
 
+	UPROPERTY(EditDefaultsOnly)
+		UParticleSystemComponent* LaserBeam;
 
 };

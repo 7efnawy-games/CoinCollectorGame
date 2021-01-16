@@ -12,7 +12,7 @@ ATurret::ATurret()
 	Barrel = CreateDefaultSubobject<UStaticMeshComponent>("Barrel");
 	SpawnPoint = CreateDefaultSubobject<USceneComponent>("SpawnPoint");
 	Cabinet = CreateDefaultSubobject<UStaticMeshComponent>("Cabinet");
-
+	LaserBeam = CreateDefaultSubobject<UParticleSystemComponent>("Laser");
 	Body->SetupAttachment(RootComponent);
 	Cabinet->SetupAttachment(Body);
 	Barrel->SetupAttachment(Cabinet);

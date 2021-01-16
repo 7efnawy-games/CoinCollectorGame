@@ -16,6 +16,7 @@ class MINIGAME_API UMyBlueprintFunctionLibrary : public UBlueprintFunctionLibrar
 {
 	GENERATED_BODY()
 		///I exposed these engine functions to the blueprints because parsing will be easier in blueprints
+public:
 		UFUNCTION(BlueprintCallable, Category = "File IO")
 		static FString LoadFileToString(FString Filename);
 

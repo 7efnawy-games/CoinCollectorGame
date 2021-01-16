@@ -51,12 +51,16 @@ void UAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 
 	if (State == ETurretState::ReadyToFire)
 	{
+		Turret->LaserBeam->SetBeamSourcePoint(0, FVector(0, 0, 0), 0);
+		Turret->LaserBeam->SetBeamTargetPoint(0, FVector(0, 0, 0), 0);
 		Fire();
 		State = ETurretState::Reloading;
 		LastFireTime = Time;
 	}
 	else if (State == ETurretState::Reloading)
 	{
+		Turret->LaserBeam->SetBeamSourcePoint(0, FVector(0, 0, 0), 0);
+		Turret->LaserBeam->SetBeamTargetPoint(0, FVector(0, 0, 0), 0);
 		if (Time - LastFireTime >= ReloadTime)
 		{
 			Turret->Barrel->SetRelativeRotation(Turret->BarrelRot);//Returns the value of the Barrel Rotation so it won't mess aiming
@@ -65,6 +69,8 @@ void UAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 	}
 	else if (State == ETurretState::Aiming)
 	{
+		Turret->LaserBeam->SetBeamSourcePoint(0, FVector(0, 0, 0), 0);
+		Turret->LaserBeam->SetBeamTargetPoint(0, FVector(0,0,0), 0);
 		if (AimtAtLocation_inTimeRange(CabinetTargetRot))
 		{
 			State = ETurretState::ReadyToFire;
@@ -215,7 +221,9 @@ AActor* UAimingComponent::LineTrace()
 			End,
 			TraceChannel
 		);
-		DrawDebugLine(GetWorld(), Start, End, FColor::Red, false, GetWorld()->GetDeltaSeconds(), '\000', 5.f);
+		//DrawDebugLine(GetWorld(), Start, End, FColor::Red, false, GetWorld()->GetDeltaSeconds(), '\000', 5.f);
+		Turret->LaserBeam->SetBeamSourcePoint(0,Start,0);
+		Turret->LaserBeam->SetBeamTargetPoint(0,End,0);
 		if (Traceresult)
 		{
 		//	UE_LOG(LogTemp, Warning, TEXT("I have hit %s"), *Hit.GetActor()->GetName())
@@ -238,6 +246,7 @@ void UAimingComponent::Patrol()
 		FRotator CurrentRot = Turret->Cabinet->GetComponentRotation();
 		CurrentRot.Yaw += DeltaRotaion * (Turret->UpperRotationRange - Turret->LowerRotationRange);
 		Turret->Cabinet->SetWorldRotation(CurrentRot);
+
 	}
 }
 float UAimingComponent::TruncSin(float T)
