@@ -7,7 +7,6 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Particles/ParticleSystemComponent.h"
 #include"Components/StaticMeshComponent.h"
-#include"CharacterSphere.h"
 #include "Projectile.generated.h"
 
 
