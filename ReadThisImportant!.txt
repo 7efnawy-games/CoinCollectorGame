@@ -1,0 +1,5 @@
+To Edit the files 
+Open the Content folder then Files
+======
+There is a problem with UE4's Hotreload if you overlapped with a coin at the first time you open the editor the game
+freezes for a moment, this happens at the first time if you stop playing and playagain this doesn't happen
